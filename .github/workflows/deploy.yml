@@ -1,4 +1,4 @@
-name: TesDeployment of Github Actions!
+name: Test Deployment of Github Actions!
 
 on:
   push:
@@ -32,3 +32,5 @@ jobs:
 
     - name: Deploy to GKE
       run: kubectl apply -f deployment.yaml
+
+Config for deployment on GKE

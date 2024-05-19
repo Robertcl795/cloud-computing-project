@@ -8,3 +8,9 @@ config/secrets.py
 
 # Docker
 *.log
+
+# VSCode
+.vscode/
+
+#Minikube
+.minikube/

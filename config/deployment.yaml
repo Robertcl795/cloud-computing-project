@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: streamlit-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: streamlit-dashboard
+  template:
+    metadata:
+      labels:
+        app: streamlit-dashboard
+    spec:
+      containers:
+        - name: streamlit-dashboard
+          image: your_registry/your_image_name
+          ports:
+            - containerPort: 8501
+          env:
+            - name: ENVIRONMENT_VARIABLE_NAME
+              value: "value_here"
+          resources:
+            limits:
+              cpu: "1" # maximum of 0.5 CPU cores
+              memory: "512Mi" # maximum of 512 MB memory

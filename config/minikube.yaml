@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: html-analyzer-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: html-analyzer
+  template:
+    metadata:
+      labels:
+        app: html-analyzer
+    spec:
+      containers:
+      - name: html-analyzer
+        image: robertcl795/html-analyzer
+        ports:
+        - containerPort: 8501
+        resources:
+          limits:
+            cpu: "1"
+            memory: "512Mi"
+      imagePullSecrets:
+      - name: reg-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: html-analyzer-service
+spec:
+  type: NodePort
+  selector:
+    app: html-analyzer
+  ports:
+  - name: html-analyzer-port
+    protocol: TCP
+    port: 8501
+    targetPort: 8501

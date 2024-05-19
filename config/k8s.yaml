@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: streamlit-dashboard
+  name: html-analyzer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: streamlit-dashboard
+      app: html-analyzer
   template:
     metadata:
       labels:
-        app: streamlit-dashboard
+        app: html-analyzer
     spec:
       containers:
-        - name: streamlit-dashboard
+        - name: html-analyzer
           image: your_registry/your_image_name
           ports:
             - containerPort: 8501
